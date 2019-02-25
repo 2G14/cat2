@@ -1,0 +1,18 @@
+#!/bin/sh
+
+for file in "$@"
+do
+    # check exist
+    if [ -a ${file} ]; then
+        # check file or dir
+        if [ -f ${file} ]; then
+            # printf "\e[xx;xx;xm {$text} \e[m" で文字色などに変化をつける
+            # 文字色:黒, 背景色:マゼンタ, 太文字
+            printf "\e[30;45;1m${file}\e[m \n"
+            ccat -G String="darkgreen" -G Keyword="darkred" -G Comment="purple" -G Punctuation="teal" -G Type="fuchisia" -G Decimal="yellow" -G Plaintext="glay" "${file}"
+        fi
+    else
+        echo "open ${file}: no such file or directory"
+    fi
+done
+
